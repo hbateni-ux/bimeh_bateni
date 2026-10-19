@@ -1,71 +1,672 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاوره بیمه باطنی</title>
-    <style>
-        body { font-family: Tahoma, Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
-        
-        header { background: #004a99; color: #fff; padding: 40px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 28px; }
-        
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 50px;}
-        .card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; border-right: 5px solid #004a99; }
-        .card h3 { color: #004a99; margin: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10365c">
+<title>مشاوران بیمه مویرگ | باطنی</title>
+<meta name="description" content="مشاوره و ثبت درخواست انواع بیمه، شخص ثالث، بدنه، زندگی، درمان و مسافرتی.">
 
-        /* استایل بخش تماس */
-        .contact-section { text-align: center; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
-        
-        /* دکمه‌های تماس و ایتا */
-        .btn { display: inline-block; padding: 15px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; color: white; transition: opacity 0.3s; }
-        .call-btn { background-color: #28a745; }
-        .eitaa-btn { background-color: #ff6600; }
-        .map-link { display: inline-block; margin-top: 20px; color: #004a99; font-weight: bold; text-decoration: underline; }
-
-        footer { background: #222; color: #fff; padding: 20px; text-align: center; margin-top: 50px; }
-    </style>
+<style>
+:root {
+  --navy:#10365c;
+  --blue:#1674b8;
+  --teal:#0ca89c;
+  --gold:#f5bd4f;
+  --bg:#f3f7fb;
+  --text:#263b50;
+  --muted:#667d91;
+  --white:#fff;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.9;
+}
+button,input,select {font:inherit}
+button,a { -webkit-tap-highlight-color:transparent }
+a {text-decoration:none;color:inherit}
+.container {width:min(1100px,92%);margin:auto}
+.top {
+  background:var(--navy);
+  color:white;
+  padding:7px 0;
+  font-size:13px;
+}
+.top .container {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+header {
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 3px 15px #10365c12;
+}
+.nav {
+  min-height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--navy);
+  font-weight:bold;
+}
+.brand-icon {
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  color:white;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  font-size:23px;
+}
+.brand small {
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:normal;
+}
+.links {display:flex;gap:17px;font-size:13px}
+.links a:hover {color:var(--teal)}
+.btn {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  border:0;
+  border-radius:11px;
+  padding:10px 17px;
+  background:var(--blue);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn:hover {filter:brightness(1.08);transform:translateY(-1px)}
+.btn.teal {background:var(--teal)}
+.btn.light {background:#e6f3fc;color:var(--navy)}
+.hero {
+  padding:55px 0;
+  background:linear-gradient(130deg,#e6f5ff,#fff 55%,#e1f8f2);
+}
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:30px;
+  align-items:center;
+}
+.pill {
+  display:inline-block;
+  border-radius:30px;
+  padding:5px 13px;
+  background:#d7f5ee;
+  color:#087e72;
+  font-size:13px;
+  font-weight:bold;
+}
+h1 {
+  color:var(--navy);
+  font-size:clamp(27px,4vw,43px);
+  line-height:1.7;
+  margin:12px 0;
+}
+.hero p {color:var(--muted)}
+.actions {display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero-box {
+  padding:28px;
+  min-height:250px;
+  border-radius:25px;
+  background:linear-gradient(140deg,#10365c,#1674b8,#0ca89c);
+  color:white;
+  box-shadow:0 15px 35px #10365c25;
+}
+.hero-box .shield {font-size:58px}
+.hero-box h2 {margin:5px 0}
+.hero-box p {color:#e5f4ff}
+section {padding:42px 0}
+.heading {text-align:center;margin-bottom:25px}
+.heading h2 {color:var(--navy);margin:0 0 5px;font-size:25px}
+.heading p {margin:0;color:var(--muted);font-size:14px}
+.services {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:17px;
+}
+.card {
+  display:flex;
+  flex-direction:column;
+  background:white;
+  border:1px solid #dce6ef;
+  border-radius:17px;
+  padding:20px;
+  box-shadow:0 5px 18px #10365c08;
+  transition:.2s;
+}
+.card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 12px 27px #10365c12;
+}
+.card-icon {
+  width:51px;height:51px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  background:#e8f4fc;
+  font-size:27px;
+  margin-bottom:10px;
+}
+.card h3 {margin:0;color:var(--navy);font-size:18px}
+.card p {color:var(--muted);font-size:13px;flex:1}
+.card .btn {width:100%;font-size:13px}
+.insurers {background:#eaf2f8}
+.insurer-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+}
+.insurer-head h2 {font-size:21px;color:var(--navy);margin:0}
+.insurer-head span {font-size:12px;color:var(--muted)}
+.logo-track {
+  display:flex;
+  gap:13px;
+  overflow-x:auto;
+  padding:8px 2px 16px;
+  scroll-snap-type:x proximity;
+  scrollbar-width:thin;
+  scrollbar-color:#9bb9ca #dce8ef;
+  cursor:grab;
+}
+.logo-track:active {cursor:grabbing}
+.insurer {
+  flex:0 0 135px;
+  min-height:100px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  text-align:center;
+  background:white;
+  border:1px solid #dce6ef;
+  border-radius:15px;
+  scroll-snap-align:start;
+  padding:10px;
+}
+.logo-symbol {
+  display:grid;
+  place-items:center;
+  width:39px;
+  height:39px;
+  border-radius:50%;
+  background:#e5f3fb;
+  color:var(--blue);
+  font-weight:bold;
+  font-size:19px;
+}
+.insurer b {font-size:13px;color:var(--navy)}
+.insurer small {font-size:10px;color:var(--muted)}
+.note {font-size:11px;color:var(--muted)}
+.steps {background:white}
+.step-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.step {
+  background:#f7fafc;
+  padding:20px;
+  border-radius:15px;
+  border:1px solid #e0eaf1;
+}
+.step-number {
+  display:grid;place-items:center;
+  width:36px;height:36px;
+  border-radius:11px;
+  background:#d7f5ee;color:#087e72;
+  font-weight:bold;
+}
+.step h3 {color:var(--navy);font-size:16px}
+.step p {font-size:13px;color:var(--muted)}
+.contact-box {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:25px;
+  border-radius:20px;
+  background:linear-gradient(120deg,#10365c,#1674b8);
+  color:white;
+}
+.contact-box h2 {margin:0 0 5px;font-size:21px}
+.contact-box p {margin:0;color:#e3f2fc;font-size:13px}
+footer {
+  background:#0b2033;
+  color:#d8e6f0;
+  padding:28px 0 14px;
+}
+.footer-grid {display:grid;grid-template-columns:1fr 1fr;gap:20px}
+footer h3 {color:white;font-size:17px}
+footer p {font-size:12px;color:#c5d6e2}
+.copyright {
+  border-top:1px solid #ffffff26;
+  text-align:center;
+  padding-top:12px;
+  margin-top:20px;
+  font-size:12px;
+}
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:#07192bd9;
+  padding:15px;
+  overflow:auto;
+  align-items:center;
+  justify-content:center;
+}
+.modal.open {display:flex}
+.modal-panel {
+  position:relative;
+  width:min(520px,100%);
+  background:white;
+  border-radius:20px;
+  padding:24px;
+}
+.modal-panel h2 {margin:0;color:var(--navy)}
+.modal-panel .intro {color:var(--muted);font-size:13px}
+.close {
+  position:absolute;
+  top:12px;left:12px;
+  border:0;border-radius:9px;
+  background:#edf3f7;
+  width:36px;height:36px;
+  cursor:pointer;font-size:22px;
+}
+.field {margin:13px 0}
+.field label {display:block;font-size:13px;font-weight:bold;margin-bottom:5px}
+.field input,.field select {
+  display:block;width:100%;
+  padding:11px;
+  border:1px solid #cad9e4;
+  border-radius:10px;
+  background:white;color:var(--text);
+}
+.field input:focus,.field select:focus {
+  outline:2px solid #b8def5;
+  border-color:var(--blue);
+}
+.consent {
+  display:flex;align-items:flex-start;gap:8px;
+  color:var(--muted);font-size:11px;
+  margin:15px 0;
+}
+.consent input {margin-top:7px}
+.submit {width:100%}
+.form-note {font-size:11px;color:var(--muted)}
+@media(max-width:800px) {
+  .links {display:none}
+  .hero-grid {grid-template-columns:1fr}
+  .services {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step-grid {grid-template-columns:1fr}
+}
+@media(max-width:520px) {
+  .top .container {justify-content:center;text-align:center}
+  .hero {padding:35px 0}
+  section {padding:32px 0}
+  .services {grid-template-columns:1fr}
+  .contact-box {align-items:flex-start;flex-direction:column}
+  .footer-grid {grid-template-columns:1fr}
+  .brand {font-size:13px}
+  .nav>.btn {font-size:12px;padding:9px}
+  .modal-panel {padding:22px 16px}
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>به سایت مشاوره بیمه ای باطنی خوش آمدید</h1>
-    </header>
+<div class="top">
+  <div class="container">
+    <span>کارگزاری مشاوران بیمه مویرگ</span>
+    <span>مشاوره و ثبت درخواست انواع بیمه</span>
+  </div>
+</div>
 
-    <div class="container">
-        <h2 style="text-align: center; margin-bottom: 30px;">خدمات بیمه‌ای ما</h2>
-        <div class="services-grid">
-            <div class="card"><h3>بیمه زندگی</h3></div>
-            <div class="card"><h3>بیمه شخص ثالث</h3></div>
-            <div class="card"><h3>بیمه درمان</h3></div>
-            <div class="card"><h3>بیمه آتش‌سوزی</h3></div>
-            <div class="card"><h3>بیمه آسانسور</h3></div>
-            <div class="card"><h3>بیمه مسئولیت</h3></div>
-            <div class="card"><h3>بیمه مسافرتی</h3></div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <span class="brand-icon">ب</span>
+      <span>مشاوران بیمه مویرگ<small>با همراهی باطنی</small></span>
+    </a>
+    <nav class="links">
+      <a href="#services">خدمات بیمه</a>
+      <a href="#insurers">شرکت‌های بیمه</a>
+      <a href="#steps">مراحل درخواست</a>
+      <a href="#contact">تماس با ما</a>
+    </nav>
+    <button class="btn" onclick="openForm('درخواست مشاوره')">درخواست مشاوره</button>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill">همراه شما در انتخاب بیمه</span>
+        <h1>با خیال آسوده‌تر،<br>برای آینده برنامه‌ریزی کنید.</h1>
+        <p>
+          برای آشنایی با خدمات بیمه و ثبت درخواست مشاوره،
+          نوع بیمه موردنظر خود را انتخاب کنید.
+        </p>
+        <div class="actions">
+          <a class="btn teal" href="#services">مشاهده خدمات بیمه</a>
+          <button class="btn light" onclick="openForm('درخواست مشاوره')">ثبت درخواست مشاوره</button>
         </div>
-
-        <!-- بخش ارتباط با ما -->
-        <div class="contact-section">
-            <h2>ارتباط با ما</h2>
-            <p>برای مشاوره رایگان و استعلام قیمت، از راه‌های زیر با ما در ارتباط باشید:</p>
-            
-            <div class="btn-group">
-                <a href="tel:09367366203" class="btn call-btn">تماس تلفنی با 09367366203</a>
-                <a href="https://eitaa.com/bimemooyrag_bateni_agency" target="_blank" class="btn eitaa-btn">عضویت در کانال ایتا</a>
-            </div>
-
-            <p style="margin-top: 25px;">📍 آدرس: اصفهان، خیابان مدرس</p>
-            
-            <!-- اینجا لینک گوگل مپ را قرار می‌دهی -->
-            <a href="https://maps.app.goo.gl/LTDjhHGDbPjDdtUP8" target="_blank" class="map-link">مشاهده موقعیت در نقشه گوگل</a>
-        </div>
+      </div>
+      <div class="hero-box">
+        <div class="shield">🛡️</div>
+        <h2>پوشش متناسب با نیاز شما</h2>
+        <p>مشاوره، انتخاب و پیگیری درخواست بیمه</p>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <p>تمامی حقوق محفوظ است © ۱۴۰۴</p>
-    </footer>
+  <section id="services">
+    <div class="container">
+      <div class="heading">
+        <h2>خدمات بیمه‌ای</h2>
+        <p>روی کادر بیمه موردنظر کلیک کنید تا فرم درخواست باز شود.</p>
+      </div>
 
+      <div class="services">
+        <article class="card">
+          <div class="card-icon">🚘</div>
+          <h3>بیمه شخص ثالث</h3>
+          <p>ثبت درخواست مشاوره برای بیمه شخص ثالث خودرو.</p>
+          <button class="btn" onclick="openForm('بیمه شخص ثالث')">درخواست بیمه ثالث</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🚗</div>
+          <h3>بیمه بدنه</h3>
+          <p>دریافت راهنمایی درباره پوشش‌های بیمه بدنه خودرو.</p>
+          <button class="btn" onclick="openForm('بیمه بدنه')">درخواست بیمه بدنه</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">💛</div>
+          <h3>بیمه زندگی</h3>
+          <p>آشنایی با طرح‌های بیمه زندگی و پس‌انداز.</p>
+          <button class="btn" onclick="openForm('بیمه زندگی')">درخواست بیمه زندگی</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🏥</div>
+          <h3>بیمه درمان تکمیلی</h3>
+          <p>ثبت درخواست راهنمایی درباره بیمه درمان انفرادی یا گروهی.</p>
+          <button class="btn" onclick="openForm('بیمه درمان تکمیلی')">درخواست بیمه درمان</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🏠</div>
+          <h3>بیمه آتش‌سوزی</h3>
+          <p>مشاوره برای بیمه منزل، محل کار و املاک.</p>
+          <button class="btn" onclick="openForm('بیمه آتش‌سوزی')">درخواست بیمه آتش‌سوزی</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🛗</div>
+          <h3>بیمه آسانسور و مسئولیت</h3>
+          <p>ثبت درخواست مشاوره برای پوشش‌های مسئولیت.</p>
+          <button class="btn" onclick="openForm('بیمه آسانسور و مسئولیت')">درخواست بیمه مسئولیت</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">✈️</div>
+          <h3>بیمه مسافرتی</h3>
+          <p>راهنمایی برای انتخاب بیمه سفر و پوشش‌های موردنیاز.</p>
+          <button class="btn" onclick="openForm('بیمه مسافرتی')">درخواست بیمه مسافرتی</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📋</div>
+          <h3>سایر بیمه‌ها</h3>
+          <p>برای بیمه‌های دیگر نیز درخواست مشاوره ثبت کنید.</p>
+          <button class="btn" onclick="openForm('سایر بیمه‌ها')">ثبت درخواست</button>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">💬</div>
+          <h3>مشاوره بیمه</h3>
+          <p>اگر هنوز نوع بیمه را انتخاب نکرده‌اید، درخواست مشاوره بدهید.</p>
+          <button class="btn" onclick="openForm('درخواست مشاوره')">درخواست مشاوره</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="insurers" id="insurers">
+    <div class="container">
+      <div class="insurer-head">
+        <h2>شرکت‌های بیمه</h2>
+        <span>برای مشاهده گزینه‌های بیشتر، نوار را افقی بکشید.</span>
+      </div>
+
+      <div class="logo-track" tabindex="0" aria-label="نوار شرکت‌های بیمه">
+        <div class="insurer"><span class="logo-symbol">ای</span><b>بیمه ایران</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">آ</span><b>بیمه آسیا</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">دی</span><b>بیمه دی</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">خ</span><b>بیمه زندگی خاورمیانه</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">س</span><b>بیمه سرمد</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">م</span><b>بیمه ملت</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">د</span><b>بیمه دانا</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">ر</span><b>بیمه رازی</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">پ</span><b>بیمه پاسارگاد</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">ال</span><b>بیمه البرز</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">کو</span><b>بیمه کوثر</b><small>شرکت بیمه</small></div>
+        <div class="insurer"><span class="logo-symbol">مع</span><b>بیمه معلم</b><small>شرکت بیمه</small></div>
+      </div>
+      <p class="note">
+        این فهرست برای معرفی نام شرکت‌هاست و به‌تنهایی به معنی نمایندگی رسمی یا قرارداد با همه آن‌ها نیست.
+        برای نمایش لوگوها، از تصاویر رسمی و مجاز استفاده کنید.
+      </p>
+    </div>
+  </section>
+
+  <section class="steps" id="steps">
+    <div class="container">
+      <div class="heading">
+        <h2>مراحل ثبت درخواست</h2>
+        <p>ثبت این فرم به معنی صدور قطعی بیمه‌نامه نیست.</p>
+      </div>
+      <div class="step-grid">
+        <div class="step">
+          <span class="step-number">۱</span>
+          <h3>انتخاب بیمه</h3>
+          <p>کادر بیمه موردنظر خود را انتخاب کنید.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">۲</span>
+          <h3>تکمیل فرم</h3>
+          <p>نام، نوع بیمه، مدت و شماره همراه را وارد کنید.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">۳</span>
+          <h3>پیگیری درخواست</h3>
+          <p>پس از ارسال موفق، درخواست برای بررسی دریافت می‌شود.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <h2>برای انتخاب بیمه راهنمایی می‌خواهید؟</h2>
+          <p>فرم درخواست مشاوره را تکمیل کنید.</p>
+        </div>
+        <button class="btn teal" onclick="openForm('درخواست مشاوره')">ثبت درخواست مشاوره</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>کارگزاری مشاوران بیمه مویرگ</h3>
+        <p>این وب‌سایت برای معرفی خدمات و دریافت درخواست اولیه مشاوره بیمه طراحی شده است.</p>
+      </div>
+      <div>
+        <h3>حریم خصوصی</h3>
+        <p>لطفاً در فرم اولیه اطلاعات حساس یا مدارک هویتی خود را وارد نکنید.</p>
+        <p>نماد اعتماد الکترونیکی فقط پس از دریافت کد رسمی مالک نماد اضافه خواهد شد.</p>
+      </div>
+    </div>
+    <div class="copyright">© کلیه حقوق این وب‌سایت محفوظ است — ۱۴۰۵</div>
+  </div>
+</footer>
+
+<div class="modal" id="requestModal" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+  <div class="modal-panel">
+    <button class="close" type="button" aria-label="بستن" onclick="closeForm()">×</button>
+    <h2 id="formTitle">فرم درخواست بیمه</h2>
+    <p class="intro">اطلاعات زیر را برای ثبت درخواست اولیه تکمیل کنید.</p>
+
+    <!--
+      برای فعال‌سازی فرم ایمیل:
+      1) وارد https://formsubmit.co شوید و راهنمای فعلی آن را بررسی کنید.
+      2) نشانی مقصد را در action نگه دارید.
+      3) اولین درخواست را ارسال و تأییدیه‌ای را که به ایمیل شما می‌آید تأیید کنید.
+      توجه: نشانی ایمیل در کد عمومی سایت قابل مشاهده است.
+    -->
+    <form id="insuranceForm" action="https://formsubmit.co/h.bateni@yahoo.com" method="POST">
+      <input type="hidden" name="_subject" value="درخواست جدید بیمه از سایت مشاوران بیمه مویرگ">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+
+      <div class="field">
+        <label for="customerName">نام و نام خانوادگی *</label>
+        <input id="customerName" name="نام و نام خانوادگی" type="text"
+          autocomplete="name" maxlength="100" required placeholder="نام کامل">
+      </div>
+
+      <div class="field">
+        <label for="insuranceType">نوع بیمه *</label>
+        <select id="insuranceType" name="نوع بیمه" required>
+          <option value="">نوع بیمه را انتخاب کنید</option>
+          <option>بیمه شخص ثالث</option>
+          <option>بیمه بدنه</option>
+          <option>بیمه زندگی</option>
+          <option>بیمه درمان تکمیلی</option>
+          <option>بیمه آتش‌سوزی</option>
+          <option>بیمه آسانسور و مسئولیت</option>
+          <option>بیمه مسافرتی</option>
+          <option>سایر بیمه‌ها</option>
+          <option>درخواست مشاوره</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="policyDuration">مدت بیمه‌نامه موردنظر *</label>
+        <select id="policyDuration" name="مدت بیمه‌نامه موردنظر" required>
+          <option value="">مدت را انتخاب کنید</option>
+          <option>یک‌ماهه</option>
+          <option>سه‌ماهه</option>
+          <option>شش‌ماهه</option>
+          <option>یک‌ساله</option>
+          <option>نیاز به مشاوره دارم</option>
+          <option>مدت دیگر</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="customerPhone">شماره تلفن همراه *</label>
+        <input id="customerPhone" name="شماره تلفن همراه" type="tel"
+          inputmode="tel" autocomplete="tel" maxlength="15" required
+          pattern="(\+?98|0)?9[0-9]{9}"
+          placeholder="09123456789"
+          title="شماره همراه ایران را وارد کنید.">
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" name="رضایت تماس برای پیگیری" value="بله" required>
+        <span>موافقم برای پیگیری این درخواست با من تماس گرفته شود. این فرم درخواست اولیه است و به معنی صدور قطعی بیمه‌نامه نیست.</span>
+      </label>
+
+      <button class="btn teal submit" type="submit">ارسال درخواست</button>
+      <p class="form-note">
+        ارسال فرم به سرویس خارجی وابسته است. پس از تنظیم و تأیید ایمیل، حتماً یک درخواست آزمایشی ارسال کنید.
+      </p>
+    </form>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById('requestModal');
+const insuranceType = document.getElementById('insuranceType');
+const formTitle = document.getElementById('formTitle');
+
+function openForm(type) {
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  formTitle.textContent = type === 'درخواست مشاوره'
+    ? 'فرم درخواست مشاوره'
+    : 'فرم درخواست ' + type;
+
+  const option = Array.from(insuranceType.options)
+    .find(item => item.textContent.trim() === type);
+
+  insuranceType.value = option ? option.value : '';
+  setTimeout(() => document.getElementById('customerName').focus(), 100);
+}
+
+function closeForm() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modal.addEventListener('click', function(event) {
+  if (event.target === modal) closeForm();
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') closeForm();
+});
+
+// امکان کشیدن نوار شرکت‌های بیمه با ماوس در رایانه
+const track = document.querySelector('.logo-track');
+let dragging = false;
+let startX = 0;
+let initialScroll = 0;
+
+track.addEventListener('mousedown', function(event) {
+  dragging = true;
+  startX = event.pageX;
+  initialScroll = track.scrollLeft;
+});
+window.addEventListener('mouseup', () => dragging = false);
+track.addEventListener('mouseleave', () => dragging = false);
+track.addEventListener('mousemove', function(event) {
+  if (!dragging) return;
+  event.preventDefault();
+  track.scrollLeft = initialScroll - (event.pageX - startX);
+});
+</script>
 </body>
 </html>
