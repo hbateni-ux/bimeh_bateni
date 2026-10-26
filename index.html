@@ -7,7 +7,32 @@
 <meta name="theme-color" content="#10365c">
 <title>مشاوران بیمه مویرگ | باطنی</title>
 <meta name="description" content="مشاوره و ثبت درخواست انواع بیمه، شخص ثالث، بدنه، زندگی، درمان و مسافرتی.">
+<!-- بخش تاریخ و ساعت شمسی -->
+<div id="shamsi-clock-box" style="direction: rtl; font-family: Tahoma, sans-serif; background: #f8f9fa; border: 1px solid #e9ecef; padding: 8px 15px; border-radius: 8px; display: inline-block; font-size: 14px; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <span id="current-date">در حال بارگذاری تاریخ...</span> | <span id="current-time" style="font-weight: bold; color: #0056b3;">--:--:--</span>
+</div>
 
+<!-- اسکریپت محاسبه و به‌روزرسانی تاریخ و ساعت شمسی -->
+<script>
+function updateShamsiClock() {
+    const now = new Date();
+    
+    // گرفتن تاریخ شمسی با استفاده از قابلیت استاندارد مرورگرها (Intl)
+    const optionsDate = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', calendar: 'persian' };
+    const formatterDate = new Intl.DateTimeFormat('fa-IR', optionsDate);
+    document.getElementById('current-date').innerText = formatterDate.format(now);
+    
+    // تنظیم ساعت
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('current-time').innerText = ${hours}:${minutes}:${seconds};
+}
+
+// اجرای اولیه و به‌روزرسانی هر یک ثانیه
+updateShamsiClock();
+setInterval(updateShamsiClock, 1000);
+  </script>
 <style>
 :root {
   --navy:#10365c;
