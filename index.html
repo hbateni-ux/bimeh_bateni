@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاوره بیمه‌ای باطنی | اصفهان</title>
+    <meta name="description" content="مشاوره تخصصی انواع بیمه زندگی، درمان، شخص ثالث، آتش‌سوزی، آسانسور، بدنه و مسافرت در اصفهان - حمیدرضا باطنی">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --border-color: #e5e7eb;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.8;
+        }
+        header {
+            background: linear-gradient(135deg, #065f46, var(--primary));
+            color: white;
+            padding: 2rem 1rem;
+        }
+        .header-content {
+            max-width: 950px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .header-title h1 {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+        .header-title p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+        .datetime-widget {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+        .datetime-widget .time {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .top-nav {
+            background-color: #042f2e;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .top-nav a {
+            color: #ccfbf1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .top-nav a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .insurance-bar {
+            background-color: #032221;
+            padding: 0.8rem 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) #032221;
+        }
+        .insurance-bar::-webkit-scrollbar {
+            height: 5px;
+        }
+        .insurance-bar::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+        .insurance-list {
+            display: inline-flex;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+        .insurance-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ccfbf1;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .container {
+            max-width: 950px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .service-item {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .service-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            border-color: var(--primary);
+        }
+        .service-item h3 {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .why-box {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .why-box h4 {
+            color: #065f46;
+            margin-bottom: 0.4rem;
+        }
+        .why-box p {
+            font-size: 0.85rem;
+            color: #047857;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+        }
+        .faq-item h4 {
+            color: var(--dark);
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        .contact-info {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            margin-bottom: 0.6rem;
+        }
+        .contact-info a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.2rem;
+        }
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .btn-eitaa { background-color: #0284c7; }
+        .btn-telegram { background-color: #2563eb; }
+        .btn-social:hover { opacity: 0.9; }
+        .map-box {
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .form-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--dark);
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <h1>مشاوره بیمه‌ای باطنی</h1>
+                <p>مشاوره تخصصی، مقایسه و انتخاب بهترین پوشش بیمه‌ای در اصفهان</p>
+            </div>
+            <div class="datetime-widget">
+                <div class="time" id="live-time">--:--:--</div>
+                <div class="date" id="live-date">تاریخ شمسی</div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="top-nav">
+        <a href="#services">🛡️ خدمات مشاوره</a>
+        <a href="#why-us">⭐ چرا ما؟</a>
+        <a href="#form-section">📋 استعلام آنلاین</a>
+        <a href="#contact">📞 تماس با ما</a>
+    </nav>
+
+    <div class="insurance-bar">
+        <div class="insurance-list">
+            <div class="insurance-badge">بیمه ایران</div>
+            <div class="insurance-badge">بیمه آسیا</div>
+            <div class="insurance-badge">بیمه دانا</div>
+            <div class="insurance-badge">بیمه سرمد</div>
+            <div class="insurance-badge">بیمه البرز</div>
+            <div class="insurance-badge">بیمه معلم</div>
+            <div class="insurance-badge">بیمه زندگی خاورمیانه</div>
+            <div class="insurance-badge">بیمه سینا</div>
+            <div class="insurance-badge">بیمه ملت</div>
+            <div class="insurance-badge">بیمه کارآفرین</div>
+            <div class="insurance-badge">بیمه دی</div>
+            <div class="insurance-badge">بیمه آسماری (SOS)</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- خدمات ما -->
+        <div class="card" id="services">
+            <h2>خدمات مشاوره بیمه</h2>
+            <p>ارائه دهنده مشاوره تخصصی، کارشناسی و صدور انواع بیمه‌نامه‌های معتبر با شرایط ویژه:</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>بیمه زندگی و سرمایه‌گذاری</h3>
+                    <p>تأمین آتیه فرزندان، تشکیل سرمایه مطمئن و پوشش‌های تکمیلی فوت و امراض خاص.</p>
+                </div>
+                <div class="service-item">
+                    <h3>بیمه درمان تکمیلی</h3>
+                    <p>جبران هزینه‌های بیمارستانی، جراحی، دندانپزشکی و پاراکلینیکی انفرادی و گروهی.</p>
+                </div>
+                <div class="service-item">
+                    <h3>بیمه شخص ثالث</h3>
+                    <p>پوشش خسارت‌های جانی و مالی اشخاص ثالث با تخفیفات کامل و صدور آنی.</p>
+                </div>
+                <div class="service-item">
+                    <h3>بیمه بدنه خودرو</h3>
+                    <p>حفاظت مالی از خودرو در برابر سرقت کلی و جزئی، تصادف، آتش‌سوزی و بلایای طبیعی.</p>
+                </div>
+                <div class="service-item">
+                    <h3>بیمه آتش‌سوزی</h3>
+                    <p>پوشش کامل منازل مسکونی، تجاری و صنعتی در برابر آتش‌سوزی، صاعقه، انفجار و زلزله.</p>
+                </div>
+                <div class="service-item">
+                    <h3>بیمه آسانسور</h3>
+                    <p>مسئولیت مدنی نگهداری و حوادث آسانسور برای مجتمع‌های مسکونی و اداری.</p>
+                </div>
+                <div class="service-item">
+                    <h3>بیمه مسافرتی</h3>
+                    <p>پوشش هزینه‌های پزشکی و اورژانسی سفرهای خارجی و جبران خسارت مفقودی بار.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- چرا ما؟ -->
+        <div class="card" id="why-us">
+            <h2>چرا مشاوره بیمه باطنی؟</h2>
+            <div class="why-us-grid">
+                <div class="why-box">
+                    <h4>مشاوره بی‌طرفانه</h4>
+                    <p>مقایسه دقیق و پیشنهاد بهترین شرکت متناسب با بودجه شما</p>
+                </div>
+                <div class="why-box">
+                    <h4>صرفه‌جویی در زمان</h4>
+                    <p>انجام تمام مراحل استعلام و کارشناسی به صورت غیرحضوری و سریع</p>
+                </div>
+                <div class="why-box">
+                    <h4>پشتیبانی در خسارت</h4>
+                    <p>راهنمایی و پیگیری پرونده‌های خسارت تا حصول نتیجه</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- پرسش‌های رایج -->
+        <div class="card">
+            <h2>پرسش‌های رایج</h2>
+            <div class="faq-item">
+                <h4>چگونه می‌توانم بهترین بیمه عمر را انتخاب کنم؟</h4>
+                <p>انتخاب بیمه عمر به اهداف شما (پس‌انداز، بازنشستگی یا پوشش‌های بیمه‌ای) بستگی دارد. کارشناسان ما به صورت رایگان بهترین طرح را به شما پیشنهاد می‌دهند.</p>
+            </div>
+            <div class="faq-item">
+                <h4>آیا امکان پرداخت قسطی حق بیمه وجود دارد؟</h4>
+                <p>بله، برای اکثر بیمه‌نامه‌ها (مانند بیمه بدنه و بیمه‌های زندگی) شرایط پرداخت اقساطی منعطف در نظر گرفته شده است.</p>
+            </div>
+        </div>
+
+        <!-- استعلام و مشاوره آنلاین (فرم گوگل) -->
+        <div class="card" id="form-section">
+            <h2>استعلام و مشاوره آنلاین</h2>
+            <p>جهت دریافت مشاوره اختصاصی، فرم زیر را تکمیل نمایید تا در کوتاه‌ترین زمان با شما تماس بگیریم:</p>
+            <div class="form-container">
+                <div style="width: 100%; overflow: hidden; border-radius: 12px; background: #fff;">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3vih3wYVjh398yOlmMNwBs0o7yshViFuBH6YiIgFnFOtZlA/viewform?embedded=true" width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0" style="border:0; width:100%;">در حال بارگذاری...</iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- تماس با ما (منتقل شده به پایین صفحه) -->
+        <div class="card" id="contact">
+            <h2>تماس با ما</h2>
+            <div class="contact-info">
+                <p>📞 <strong>تلفن تماس:</strong> <a href="tel:09367366203">09367366203</a></p>
+                <p>📍 <strong>آدرس دفتر:</strong> استان اصفهان، شهر اصفهان، خیابان مدرس، خیابان مولوی، نیلوفر ۱۵</p>
+            </div>
+            
+            <div class="social-buttons">
+                <a href="https://eitaa.com/bimemooyrag_bateni_agency" class="btn-social btn-eitaa" target="_blank">
+                    💬 کانال ایتا (@Hamidreza_bti)
+                </a>
+                <a href="https://t.me/HMd0010" class="btn-social btn-telegram" target="_blank">
+                    ✈️ ارتباط در تلگرام (HMd0010)
+                </a>
+            </div>
+
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3340.2!2d51.68!3d32.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDM5JzAwLjAiTiA1McKwNDAnNDguMCJF!5e0!3m2!1sfa!2sir!4v1600000000000" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>تمامی حقوق محفوظ است © ۱۴۰۵ | مشاوره بیمه‌ای باطنی - اصفهان</p>
+    </footer>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('live-time').innerText = now.toLocaleTimeString('fa-IR');
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            document.getElementById('live-date').innerText = now.toLocaleDateString('fa-IR', options);
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+
+</body>
+</html>
